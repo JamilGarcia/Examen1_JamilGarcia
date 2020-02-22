@@ -56,4 +56,7 @@ public class Tutores extends Cuenta{
         return "Tutores{" + "clase=" + clase + ", ganancias=" + ganancias + ", tutos=" + tutos + ", nvlense=" + nvlense + '}';
     }
     
+    public void ganacia(){
+        ganancias += 270;
+    }
 }

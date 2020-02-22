@@ -1,6 +1,7 @@
 package examen1_jamilgarcia;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -76,8 +77,14 @@ public class Principal extends javax.swing.JFrame {
         jTabbedPane4 = new javax.swing.JTabbedPane();
         jDesktopPane8 = new javax.swing.JDesktopPane();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaDatosT = new javax.swing.JTable();
+        b_actuaTut = new javax.swing.JButton();
+        b_modifcarT = new javax.swing.JButton();
         jDesktopPane9 = new javax.swing.JDesktopPane();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        TablaDarTut = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jDesktopPane12 = new javax.swing.JDesktopPane();
         jButton1 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -365,6 +372,11 @@ public class Principal extends javax.swing.JFrame {
         jLabel29.setText("Tema:");
 
         b_agregarT.setText("Agregar Tutoria");
+        b_agregarT.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                b_agregarTMouseClicked(evt);
+            }
+        });
 
         jDesktopPane10.setLayer(jLabel24, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane10.setLayer(jLabel25, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -489,20 +501,50 @@ public class Principal extends javax.swing.JFrame {
 
         jf_menuTutor.setResizable(false);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaDatosT.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nombre", "edad", "Carrera", "Nacimeinto", "Cuenta", "usuario", "Contraseña"
             }
-        ));
-        jScrollPane4.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(tablaDatosT);
+        if (tablaDatosT.getColumnModel().getColumnCount() > 0) {
+            tablaDatosT.getColumnModel().getColumn(0).setResizable(false);
+            tablaDatosT.getColumnModel().getColumn(1).setResizable(false);
+            tablaDatosT.getColumnModel().getColumn(2).setResizable(false);
+            tablaDatosT.getColumnModel().getColumn(3).setResizable(false);
+            tablaDatosT.getColumnModel().getColumn(4).setResizable(false);
+            tablaDatosT.getColumnModel().getColumn(5).setResizable(false);
+            tablaDatosT.getColumnModel().getColumn(6).setResizable(false);
+        }
+
+        b_actuaTut.setText("Actualizar");
+        b_actuaTut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                b_actuaTutMouseClicked(evt);
+            }
+        });
+
+        b_modifcarT.setText("Modificar");
+        b_modifcarT.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                b_modifcarTMouseClicked(evt);
+            }
+        });
 
         jDesktopPane8.setLayer(jScrollPane4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane8.setLayer(b_actuaTut, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane8.setLayer(b_modifcarT, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane8Layout = new javax.swing.GroupLayout(jDesktopPane8);
         jDesktopPane8.setLayout(jDesktopPane8Layout);
@@ -510,28 +552,92 @@ public class Principal extends javax.swing.JFrame {
             jDesktopPane8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1011, Short.MAX_VALUE)
+                .addComponent(jScrollPane4)
                 .addContainerGap())
+            .addGroup(jDesktopPane8Layout.createSequentialGroup()
+                .addGap(260, 260, 260)
+                .addComponent(b_modifcarT)
+                .addGap(111, 111, 111)
+                .addComponent(b_actuaTut)
+                .addContainerGap(482, Short.MAX_VALUE))
         );
         jDesktopPane8Layout.setVerticalGroup(
             jDesktopPane8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane8Layout.createSequentialGroup()
-                .addGap(125, 125, 125)
+                .addGap(64, 64, 64)
+                .addGroup(jDesktopPane8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(b_actuaTut)
+                    .addComponent(b_modifcarT))
+                .addGap(29, 29, 29)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jTabbedPane4.addTab("Listar", jDesktopPane8);
 
+        TablaDarTut.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Tema", "Fecha", "Aula", "Clase"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(TablaDarTut);
+        if (TablaDarTut.getColumnModel().getColumnCount() > 0) {
+            TablaDarTut.getColumnModel().getColumn(0).setResizable(false);
+            TablaDarTut.getColumnModel().getColumn(1).setResizable(false);
+            TablaDarTut.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        jButton2.setText("Actualizar");
+
+        jButton3.setText("Dar Tutoria");
+
+        jDesktopPane9.setLayer(jScrollPane5, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane9.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane9.setLayer(jButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout jDesktopPane9Layout = new javax.swing.GroupLayout(jDesktopPane9);
         jDesktopPane9.setLayout(jDesktopPane9Layout);
         jDesktopPane9Layout.setHorizontalGroup(
             jDesktopPane9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1023, Short.MAX_VALUE)
+            .addGroup(jDesktopPane9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(68, 68, 68)
+                .addGroup(jDesktopPane9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
+                .addContainerGap(365, Short.MAX_VALUE))
         );
         jDesktopPane9Layout.setVerticalGroup(
             jDesktopPane9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 675, Short.MAX_VALUE)
+            .addGroup(jDesktopPane9Layout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addGroup(jDesktopPane9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDesktopPane9Layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jTabbedPane4.addTab("Dar Tutorias", jDesktopPane9);
@@ -570,7 +676,7 @@ public class Principal extends javax.swing.JFrame {
             jf_menuTutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jf_menuTutorLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane4)
+                .addComponent(jTabbedPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1025, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jf_menuTutorLayout.setVerticalGroup(
@@ -1189,6 +1295,73 @@ public class Principal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1MouseClicked
 
+    private void b_actuaTutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_actuaTutMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel modelo
+                = (DefaultTableModel) tablaDatosT.getModel();
+
+        for (int i = 0; i < cuen.size(); i++) {
+            if (cuen.get(i) instanceof Tutores) {
+                Object[] newrow = {
+                    ((Tutores) cuen.get(i)).getNombre(),
+                    ((Tutores) cuen.get(i)).getEdad(),
+                    ((Tutores) cuen.get(i)).getCarrera(),
+                    ((Tutores) cuen.get(i)).getLugarNac(),
+                    ((Tutores) cuen.get(i)).getNumeroCuent(),
+                    ((Tutores) cuen.get(i)).getUsuario(),
+                    ((Tutores) cuen.get(i)).getContra()
+                };
+                modelo.addRow(newrow);
+            }
+        }
+        
+        
+    }//GEN-LAST:event_b_actuaTutMouseClicked
+
+    private void b_modifcarTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_modifcarTMouseClicked
+       // TODO add your handling code here:
+        
+        String nom, carrera, lugarnac, usuario, contra;
+        int edad, numeroCuent;
+        DefaultTableModel modelo
+                = (DefaultTableModel) tablaDatosT.getModel();
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            if (cuen.get(i) instanceof Tutores) {
+                Object[] newrow = {
+                    nom = (String) modelo.getValueAt(i, 0),
+                    edad = (Integer) modelo.getValueAt(i, 1),
+                    carrera = (String) modelo.getValueAt(i, 2),
+                    lugarnac = (String) modelo.getValueAt(i, 3),
+                    numeroCuent = (Integer) modelo.getValueAt(i, 4),
+                    usuario = (String) modelo.getValueAt(i, 5),
+                    contra = (String) modelo.getValueAt(i, 6),};
+            }
+
+        }
+        JOptionPane.showMessageDialog(this, "Modifcado con exito!!! Actualice la tabla");
+    }//GEN-LAST:event_b_modifcarTMouseClicked
+
+    private void b_agregarTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_agregarTMouseClicked
+        // TODO add your handling code here:
+        try {
+            String tema;
+            Date fecha; 
+            int hora, aula;
+
+            hora = sp_hora.getComponentCount();
+            aula = Integer.parseInt(tf_aula.getText());
+            
+            tema = tf_temaT.getText();
+            fecha = dc_fechaT.getDate();
+
+            tutos.add(new Tutorias(hora, aula, fecha, tema));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "No puede ir ningun espacio vacio o contacte al administrador");
+        }
+    }//GEN-LAST:event_b_agregarTMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1225,8 +1398,10 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TablaDarTut;
     private javax.swing.JButton b_actua;
     private javax.swing.JButton b_actuaEx;
+    private javax.swing.JButton b_actuaTut;
     private javax.swing.JButton b_agregarExa;
     private javax.swing.JButton b_agregarT;
     private javax.swing.JButton b_agregaralumno;
@@ -1236,10 +1411,13 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton b_login;
     private javax.swing.JButton b_logout;
     private javax.swing.JButton b_mod;
+    private javax.swing.JButton b_modifcarT;
     private javax.swing.JComboBox<String> cb_claseEx;
     private javax.swing.JComboBox<String> cb_claseimp;
     private com.toedter.calendar.JDateChooser dc_fechaT;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JDesktopPane jDesktopPane10;
     private javax.swing.JDesktopPane jDesktopPane11;
@@ -1284,17 +1462,18 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTabbedPane jTabbedPane4;
-    private javax.swing.JTable jTable1;
     private javax.swing.JFrame jf_MenuAlumno;
     private javax.swing.JFrame jf_menuTutor;
     private javax.swing.JSpinner sp_edad;
     private javax.swing.JSpinner sp_hora;
     private javax.swing.JSpinner sp_puntaje;
     private javax.swing.JTable tablaDatos;
+    private javax.swing.JTable tablaDatosT;
     private javax.swing.JTable tablaPen;
     private javax.swing.JTable tablaRes;
     private javax.swing.JTextField tf_aula;
@@ -1314,4 +1493,5 @@ public class Principal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     ArrayList<Cuenta> cuen = new ArrayList();
     ArrayList<Examen> examen = new ArrayList();
+    ArrayList<Tutorias> tutos = new ArrayList();
 }

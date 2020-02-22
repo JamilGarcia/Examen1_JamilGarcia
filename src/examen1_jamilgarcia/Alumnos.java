@@ -1,5 +1,7 @@
 package examen1_jamilgarcia;
 
+import java.util.Random;
+
 public class Alumnos extends Cuenta{
     
     private int conoAcum;
@@ -46,5 +48,10 @@ public class Alumnos extends Cuenta{
         return "Alumnos{" + "conoAcum=" + conoAcum + ", nvlApren=" + nvlApren + ", exaRea=" + exaRea + '}';
     }
     
-    
+    public void conoacum(int t){
+        Random ran = new Random();
+        int con = ran.nextInt(99);
+        con += t;
+        conoAcum = con; 
+    }
 }
