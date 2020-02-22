@@ -606,8 +606,18 @@ public class Principal extends javax.swing.JFrame {
         }
 
         jButton2.setText("Actualizar");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
 
         jButton3.setText("Dar Tutoria");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
 
         jDesktopPane9.setLayer(jScrollPane5, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane9.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -676,7 +686,7 @@ public class Principal extends javax.swing.JFrame {
             jf_menuTutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jf_menuTutorLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1025, Short.MAX_VALUE)
+                .addComponent(jTabbedPane4)
                 .addContainerGap())
         );
         jf_menuTutorLayout.setVerticalGroup(
@@ -1361,6 +1371,16 @@ public class Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No puede ir ningun espacio vacio o contacte al administrador");
         }
     }//GEN-LAST:event_b_agregarTMouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton3MouseClicked
 
     /**
      * @param args the command line arguments

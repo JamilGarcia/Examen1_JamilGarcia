@@ -11,6 +11,10 @@ public class Cuenta {
 
     public Cuenta() {
     }
+    
+    public Cuenta(String nombre) {
+        this.nombre = nombre;
+    }
 
     public Cuenta(String nombre, int edad, String carrera, String lugarNac, int numeroCuent, String usuario, String contra) {
         this.nombre = nombre;
